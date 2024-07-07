@@ -28,8 +28,8 @@ const material = new THREE.ShaderMaterial({
   fragmentShader: fragment,
   uniforms: {
     uTime: new THREE.Uniform(0.0),
-    uDepthColor: new THREE.Uniform(new THREE.Color("#ffe8ce")),
-    uSurfaceColor: new THREE.Uniform(new THREE.Color("#fee0ba")),
+    uDepthColor: new THREE.Uniform(new THREE.Color("#ffffff")),
+    uSurfaceColor: new THREE.Uniform(new THREE.Color("#31d194")),
   },
   transparent: true,
   side: THREE.DoubleSide,
@@ -38,7 +38,7 @@ const material = new THREE.ShaderMaterial({
 });
 
 const sphere = new THREE.Mesh(
-  new THREE.IcosahedronGeometry(1, 10),
+  new THREE.IcosahedronGeometry(1, 100),
   // new THREE.MeshStandardMaterial()
   material
 );

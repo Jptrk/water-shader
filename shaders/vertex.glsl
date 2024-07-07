@@ -6,6 +6,8 @@ varying float vNoise;
 uniform float uTime;
 
 #include ./includes/cnoise.glsl
+#include ./includes/get2dRotateMatrix.glsl
+
 void main() {
     // Variables
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);
@@ -18,6 +20,11 @@ void main() {
     // Wave
     float noise = cnoise(vec3(modelPosition.xyz) + uTime * animationSpeed) * waveStrength;
     modelPosition.xz += vec2(noise);
+
+    // Twist
+    float angle = modelPosition.y * 8.0;
+    mat2 rotateMatrix = get2dRotateMatrix(angle);
+    modelPosition.xz = rotateMatrix * modelPosition.xz;
 
     // Final Position
     gl_Position = projectionMatrix * viewMatrix * modelPosition;

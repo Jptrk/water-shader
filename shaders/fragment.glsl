@@ -24,8 +24,8 @@ void main() {
     vec3 mixedColor = mix(color, uDepthColor, 0.1);
 
     // Falloff
-    // float falloff = smoothstep(0.8, 0.0, fresnel);
-    // color *= falloff;
+    float falloff = smoothstep(0.8, 0.0, fresnel);
+    mixedColor *= falloff;
 
     gl_FragColor = vec4(mixedColor, 1.0);
 }
